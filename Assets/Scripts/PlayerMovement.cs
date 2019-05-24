@@ -119,19 +119,7 @@ public class PlayerMovement : MonoBehaviour {
     //A method determining what floor is player located in. This is not a robust approach I feel because this is hard coded based on values that I found via accelerometer data.
     //And also the data will change for each building and we dont want to touch this horrible code :P on adding new building models right?
     public FloorLevel GetFloor(){
-        //var yPosition = virtualPlayer.transform.position.y;
-        ////TODO: Determine the floor based on y axis.
-        //FloorLevel floor = FloorLevel.unknown;
-        //// +2 ... -1 -> Fourth Floor
-        //// -1... -4 -> Third Floor
-        //// -4 ... -8 -> Second floor
-        //// -8 ... -15 > First Floor
-        //if (yPosition > -1 && yPosition <= 4) { floor = FloorLevel.fourth; }
-        //else if (yPosition > -4 && yPosition <= -1) { floor = FloorLevel.third; }
-        //else if (yPosition > -8 && yPosition <= -4) { floor = FloorLevel.second; }
-        //else if (yPosition > -15 && yPosition <= -8) { floor = FloorLevel.first; }
-        //else { floor = FloorLevel.unknown; }
-        //return floor;
+     
         return getFloorLevel(virtualPlayer);
     }
 

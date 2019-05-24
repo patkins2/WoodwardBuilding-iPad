@@ -37,19 +37,6 @@ public class NodeNavigation : MonoBehaviour {
         playerMovementManager = PlayerMovementGameObject.GetComponent<PlayerMovement>();
         navViz = new NavigationViz();
         GenerateGraph();
-
-        //startNode = "4042";
-        //destination = "130";
-
-        //GetAllPaths();
-        //if (possiblePaths.Count == 0)
-        //{
-        //    print("No paths have been found");
-        //}
-        //else
-        //{
-        //    print("there are " + possiblePaths.Count + " possible paths ");
-        //}
     }
 
     private void Update()
@@ -69,10 +56,15 @@ public class NodeNavigation : MonoBehaviour {
                 GameObject player1 = CustomNetworkManager.ClientRawGameObjects[0];
                 GameObject player2 = CustomNetworkManager.ClientRawGameObjects[1];
 
+                if (player2 == null){
+                    PlayerToPlayerNavigation = false;
+                    return;
+                }
                 //Cancel the operation if the player2 coordinates are not recived
-                if (player2.transform.position == Vector3.zero || player2 == null)
+                if (player2.transform.position == Vector3.zero)
                 {
                     print("Player 2 doesn't seem to be a moving real person. Or there are no two players to start this functionality");
+                    PlayerToPlayerNavigation = false;
                     return;
                 }
 
@@ -111,52 +103,7 @@ public class NodeNavigation : MonoBehaviour {
             print("Please attach Player Movement GameObject to Node Navigation GameObject in IDE");
             return;
         }
-        //FloorLevel floor = playerMovementManager.GetFloor();
-        //TextAsset floorLocation = null;
-        //GameObject parentFloor = null;
-        //switch(floor){
-        //    case FloorLevel.first:
-        //        floorLocation = Floor1LocationFile;
-        //        parentFloor = FirstFloor;
-        //        break;
-        //    case FloorLevel.second:
-        //        floorLocation = Floor2LocationFile;
-        //        parentFloor = SecondFloor;
-        //        break;
-        //    case FloorLevel.third:
-        //        floorLocation = Floor3LocationFile;
-        //        parentFloor = ThirdFloor;
-        //        break;
-        //    case FloorLevel.fourth:
-        //        floorLocation = Floor4LocationFile;
-        //        parentFloor = FourthFloor;
-        //        break;
-        //    case FloorLevel.unknown:
-        //        print("Floor not yet determined");
-        //        parentFloor = Building;
-        //        return;
-        //}
-
-        //string locationString = floorLocation.text;
-        //string[] possibleSources = locationString.Split('\n');
-        //float shortestDistance = float.MaxValue;
-        //startNode = "";
-
-        ////TODO: Redundant code/ similar code as performed in custom network manager where each client is allocated a position inside a floor model 
-        ////by determining its parent floor, calculating the offset. Trying to do the same calculation over here. The functionality can be optimised for reusability 
-        //Vector3 localizedPosition = playerMovementManager.virtualPlayer.transform.position - parentFloor.transform.position;
-
-        //foreach (string node in possibleSources){
-        //    GameObject possibleSource = GameObject.Find(node);
-        //    if(possibleSource == null){
-        //        print("Game object named " + node + " was not found..");
-        //    }
-        //    float distance = (localizedPosition - possibleSource.transform.position).magnitude;
-        //    if (distance < shortestDistance){ 
-        //        shortestDistance = distance;
-        //        startNode = node;
-        //    }
-        //}
+       
         startNode = NearestNode(playerMovementManager.virtualPlayer);
 
     }
@@ -397,12 +344,12 @@ private string SetNearestNodeOf(GameObject player)
 
 
 //Extre code to be deleted
-class Node{
+class BuildingNode{
 
     Dictionary<string, int> connections;
     string name;
     //string parent;
-    public Node(string name, string parent){
+    public BuildingNode(string name, string parent){
         this.name = name;
         //this.parent = parent;
     }

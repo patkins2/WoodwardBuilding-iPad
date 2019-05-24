@@ -15,9 +15,6 @@ EditorBuildSettings:
     path: Assets/UnityARKitPlugin/Examples/UnityARBallz/UnityARBallz.unity
     guid: 75972bcfc855b486593ec2ec68da0b81
   - enabled: 0
-    path: Assets/UnityARKitPlugin/Examples/UnityARShadows/UnityARShadows.unity
-    guid: 14d17ec7304f440b48e6b953ba7a5895
-  - enabled: 0
     path: Assets/UnityARKitPlugin/Examples/UnityAROcclusion/UnityAROcclusion.unity
     guid: 7f026c59fb9d6489ab924c6e0e119760
   - enabled: 0
@@ -26,6 +23,9 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/UnityARKitPlugin/Examples/FocusSquare/FocusSquareScene.unity
     guid: 3c9ef824a7b95400bade362484e9b6af
+  - enabled: 0
+    path: Assets/UnityARKitPlugin/Examples/UnityARShadows/UnityARShadows.unity
+    guid: 14d17ec7304f440b48e6b953ba7a5895
   - enabled: 0
     path: Assets/UnityARKitPlugin/Examples/FaceTracking/FaceAnchorScene.unity
     guid: 46e299c2ec1244fbaa1b9b14e2ab198a
