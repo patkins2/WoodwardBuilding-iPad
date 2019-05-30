@@ -155,7 +155,7 @@ PlayerSettings:
     Android: com.Company.ProductName
     Standalone: unity.Unity Technologies.Native Rendering Plugin Example
     Tizen: com.Company.ProductName
-    iOS: com.unity.arkitscene
+    iOS: com.unity.arSmartBuildings
     tvOS: com.Company.ProductName
   buildNumber:
     iOS: 0
@@ -352,6 +352,8 @@ PlayerSettings:
   - m_BuildTarget: iOS
     m_Enabled: 1
   - m_BuildTarget: Metro
+    m_Enabled: 1
+  - m_BuildTarget: Standalone
     m_Enabled: 1
   openGLRequireES31: 0
   openGLRequireES31AEP: 0
@@ -752,13 +754,13 @@ PlayerSettings:
     Game_Performance: 0
     Hub: 0
     Purchasing: 0
-    UNet: 0
+    UNet: 1
     Unity_Ads: 0
   facebookSdkVersion: 7.9.4
   apiCompatibilityLevel: 2
-  cloudProjectId: 5b302311-21b9-4623-8d6d-e557f9a4e813
-  projectName: VuforiaHololens - iPad (1)
-  organizationId: branhami2
+  cloudProjectId: 9056d7c6-49b9-4b07-b272-de021030da19
+  projectName: VuforiaHololens - iPad
+  organizationId: pca03
   cloudEnabled: 0
   enableNativePlatformBackendsForNewInputSystem: 0
   disableOldInputManagerSupport: 0
