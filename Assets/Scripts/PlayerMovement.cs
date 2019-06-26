@@ -32,7 +32,7 @@ public class PlayerMovement : MonoBehaviour {
     //TODO: Seems like it compensates the initial rotation that image target introduces. Need more analysis.
     private readonly Quaternion xAxisRot = Quaternion.AngleAxis(90, Vector3.right);
 
-    private int i = 1;
+    private int i = 0;
 
     [SerializeField] public GameObject image_404, image_Astro;
     private ImageTarget ImageTargetTest;
