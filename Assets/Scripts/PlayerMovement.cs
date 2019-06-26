@@ -32,7 +32,7 @@ public class PlayerMovement : MonoBehaviour {
     //TODO: Seems like it compensates the initial rotation that image target introduces. Need more analysis.
     private readonly Quaternion xAxisRot = Quaternion.AngleAxis(90, Vector3.right);
 
-    private int i;
+    private int i = 1;
 
     [SerializeField] public GameObject image_404, image_Astro;
     private ImageTarget ImageTargetTest;
@@ -62,14 +62,14 @@ public class PlayerMovement : MonoBehaviour {
     {
         if (vuforiaTargetDetected)
         {   
-            if (ImageTargetTest.Equals(image_404))
+            /*if (ImageTargetTest.Equals(image_404))
             {
                 i = 0;
             }
             else
             {
                 i = 1;
-            }
+            }*/
             vuforiaTargetDetected = false;
             lastImageTracked = "actualImageTarget. To be dynamic in next update";
         }
