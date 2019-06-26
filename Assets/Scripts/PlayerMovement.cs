@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
-
+using Vuforia;
 
 public enum FloorLevel
 {
@@ -17,7 +17,7 @@ public class PlayerMovement : MonoBehaviour {
     //ServerImage Target is place which is universal. Each client and server will have server image location targets. 
     //TODO: The 'image' word is misleading. Will update the name in next update. Should be something like ServerTargetLocation
     //TODO: The ServerImageTarget should not be Serialize field. It should be dynamically updated when particular image target is found.
-    [SerializeField] public GameObject ServerImageTarget;
+    [SerializeField] public GameObject[] ServerImageTarget;
 
     //PlayerImageTarget is the vuforia image that the camera detects. It is static so that Vuforia DefaultTrackable can directly assign the detected image's transform here. Thus we have track of image target's transform thus being able to calculate the offset.
     public static GameObject PlayerImageTarget;
@@ -31,6 +31,11 @@ public class PlayerMovement : MonoBehaviour {
 
     //TODO: Seems like it compensates the initial rotation that image target introduces. Need more analysis.
     private readonly Quaternion xAxisRot = Quaternion.AngleAxis(90, Vector3.right);
+
+    private int i;
+
+    [SerializeField] public GameObject image_404, image_Astro;
+    private ImageTarget ImageTargetTest;
 
     // Use this for initialization
     void Start()
@@ -56,7 +61,15 @@ public class PlayerMovement : MonoBehaviour {
     private void scanImageTarget()
     {
         if (vuforiaTargetDetected)
-        {
+        {   
+            if (ImageTargetTest.Equals(image_404))
+            {
+                i = 0;
+            }
+            else
+            {
+                i = 1;
+            }
             vuforiaTargetDetected = false;
             lastImageTracked = "actualImageTarget. To be dynamic in next update";
         }
@@ -92,7 +105,7 @@ public class PlayerMovement : MonoBehaviour {
         var pos = MatrixUtils.ExtractTranslationFromMatrix(ref m);
         pos.y = -pos.y;
         //Setting the virtual player as a child of Image Target (for server)
-        virtualPlayer.transform.SetParent(ServerImageTarget.transform, false);
+        virtualPlayer.transform.SetParent(ServerImageTarget[i].transform, false);
         //Assigning local position to virtual player with rewspect to Image Target
         virtualPlayer.transform.localPosition = pos;
     }
