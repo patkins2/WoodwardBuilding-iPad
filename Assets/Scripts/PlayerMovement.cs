@@ -62,14 +62,14 @@ public class PlayerMovement : MonoBehaviour {
     {
         if (vuforiaTargetDetected)
         {   
-            /*if (ImageTargetTest.Equals(image_404))
+            if (ServerImageTarget.Equals(image_404))
             {
                 i = 0;
             }
             else
             {
                 i = 1;
-            }*/
+            }
             vuforiaTargetDetected = false;
             lastImageTracked = "actualImageTarget. To be dynamic in next update";
         }
